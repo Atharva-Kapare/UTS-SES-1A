@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Projection by TEMPLATED</title>
+		<title>EHealth</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -15,12 +15,16 @@
 
 		<!-- Header -->
 		<header id="header">
-			<div class="inner">
+			<div class="inner" id="navID">
 				<a href="index.html" class="logo"><strong>EH</strong>ealth</a>
 				<nav id="nav">
 					<a href="index.html">Home</a>
-					<a href="register.html">Register</a>
-					<a href="login.html">Login</a>
+				
+					<a v-if="log" href="profile.html">Profile</a>
+					<a v-if="!log" href="register.html">Register</a>
+					<a v-if="!log" href="login.html">Login</a>
+					<a v-if="log" href="javascript:signOut();">Log Out</a>
+
 				</nav>
 				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 			</div>
@@ -29,17 +33,45 @@
 		<!-- Three -->
 			<section id="three" class="wrapper">
 				<div class="inner" >
-					<header class="align-center" id="register">
+					<div class="align-center" id="register">
 						<h2>Register</h2>
-						<input v-model="emailField" type="email" placeholder="Email"><br>
+					
+						<table>
+							<tr>
+								<td><input v-model="firstField" id="firstName" type="text" placeholder="First Name"></td>
+								<td><input v-model="lastField" id="lastName" type="text" placeholder="Last Name"></td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td><input v-model="emailField" type="email" placeholder="Email"></td>
+							</tr>
+						</table>
+
+						<div class="field">
+							
+
+						</div>
 						<input v-model="passwordField" type="password" placeholder="Password"><br>
+						<input v-model="passwordFieldConfirm" type="password" placeholder="Confirm Password"><br>
+						<input v-model="addressField" type="text" placeholder="Address"><br>
+						<input v-model="phoneField" type="text" placeholder="Phone"><br>
+
+						<h4>I want to register as a:</h4>
+						<ol>
+							<input v-bind:value="'patient'" v-model="client" type="radio" id="patient" name="client" value="patient" checked>
+							<label for="patient">Patient</label><br>
+							<input v-bind:value="'doctor'" v-model="client" type="radio" id="doctor" name="client" value="doctor">
+							<label for="doctor">Doctor</label><br>
+						</ol>
 
 						<button v-on:click="registerUser">{{sample}}</button><br>
 						<h2>{{wait}}</h2>
 
 						<a href="./login.html">Already have an account? Click here to login</a>
-					</header>
-					<div class="image round left">
+					</div>
+					
+					<!-- <div class="image round left">
 						<img src="images/pic01.jpg" alt="Pic 01" />
 					</div>
 					<p>Sample things you can talk about here, maybe something about convincing the customer to make an account?</p>
@@ -49,7 +81,7 @@
 					</div>
 					<p>More places you can put things in</p>
 
-					<p>Even more places</p>
+					<p>Even more places</p> -->
 
 				</div>
 			</section>
@@ -81,7 +113,7 @@
 					</form>
 
 					<div class="copyright">
-						Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="http://">Source code can be found here</a>
+						Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="https://github.com/Atharva-Kapare/UTS-SES-1A/tree/master">Source code can be found here</a>
 					</div>
 
 				</div>
@@ -91,10 +123,11 @@
 			<!-- The core Firebase JS SDK is always required and must be listed first -->
 			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
 
 			<!-- TODO: Add SDKs for Firebase products that you want to use
 				https://firebase.google.com/docs/web/setup#available-libraries -->
-			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+			<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script> -->
 
 			<script>
 			// Your web app's Firebase configuration
@@ -110,7 +143,8 @@
 			};
 			// Initialize Firebase
 			firebase.initializeApp(firebaseConfig);
-			firebase.analytics();
+			var db = firebase.firestore();
+			// firebase.analytics();
 			const auth = firebase.auth();
 			</script>
 
