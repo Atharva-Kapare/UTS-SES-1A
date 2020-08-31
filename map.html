@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      
+      #map {
+        height: 400px;  
+        width: 100%;  
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Doctors Near You</h3>
+  
+    <div id="map"></div>
+    <script>
+
+function initMap() {
+  // The location of Sydney
+  var options = {
+      zoom:8,
+      center:{lat:-33.8696,lng:151.20695}}
+  // The map, centered at Sydney
+  var map = new google.maps.Map(
+      document.getElementById('map'), options);
+  // The marker, positioned at Sydney
+  var marker = new google.maps.Marker({position: {lat:-33.8696,lng:151.20695}, 
+  map: map,
+icon: 'http://maps.google.com/mapfiles/kml/pal4/icon63.png'
+});
+/*
+var infoWindow = new google.maps.infoWindow({
+    content:'<h1>Lynn MA</h1>'
+});
+marker.addListener('click', function(){
+    infoWindow.open(map, marker); 
+}); */
+
+addMarker({coords:{lat:-33.8696,lng:151.20695},
+content});
+addMarker({coords:{lat:-33.76464,lng:150.81738}});
+addMarker({coords:{lat:-33.77561,lng:150.91739}});
+
+
+function addMarker(props){
+    var marker = new google.maps.Marker({
+        position:props.coords,
+        map:map,
+        icon: 'http://maps.google.com/mapfiles/kml/pal4/icon63.png'
+
+    });
+}
+}
+    </script>
+    <script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBW27UcQrEqO9CkQmO8fyoSNENA9Pvwlc&callback=initMap">
+    </script>
+  </body>
+</html>
