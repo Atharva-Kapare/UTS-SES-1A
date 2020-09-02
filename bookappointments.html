@@ -35,13 +35,16 @@
 				<h2>Make Appointment</h2>
 				<form action="MyAppointment.html" method="post"> 
 				<table>
-					<tr><td>Name:</td><td><input type="text" placeholder="Enter name" name="name" class="input"></td></tr>  
-					<tr><td>Date of Booking:</td><td><input type="date" name="date" value="" placeholder=""></td></tr>
-					<tr><td>Illness:</td><td><input type="text" list="illness" name="airports"></td></tr>
+					<tr><td>Name:</td><td><input type="text" placeholder="Enter Doctor's name" name="name" class="input"></td></tr>  
+					<tr><td>Illness:</td><td><input type="text" placeholder="Condition, Procedure" list="illness" name="airports"></td></tr>
                     <datalist id="illness">
-                    <option value="internal medicine diseases">
-                    <option value="Surgical Diseases">
-                    </datalist>                          	
+                    	<option value="Internal Medicine Diseases">
+                    	<option value="Surgical Diseases">
+						<option value="Dental Health">
+						<option value="Dermatologist">
+						<option value="Eye Doctor">
+					</datalist>    
+					<tr><td>Date of Booking:</td><td><input type="date" name="date" value="" placeholder=""></td></tr>                      	
 				</table>
 				</form>
 				<input class="button" value= "submit" type = "submit" href="MyAppointment.html">
