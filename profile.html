@@ -34,7 +34,29 @@
 		<!-- Three -->
 			<section id="three" class="wrapper">
 				<div class="inner" id="profile">
+					<label>First Name:</label>
+					<input v-model="firstField" type="text"><br>
 
+					<label>Last Name:</label>
+					<input v-model="lastField" type="text"><br>
+
+					<label>Email: (This field can not be changed)</label>
+					<input v-model="emailField" type="text" disabled><br>
+
+					<label>Phone:</label>
+					<input v-model="phoneField" type="text"><br>
+
+					<label>Address:</label>
+					<input v-model="addressField" type="text"><br>
+
+					
+					<div class="align-center">
+						<h3>You have registered as a {{client}}</h3>
+
+						<p>Want to change Password? <a href="javascript:forgotPass()">Click here to change</a></p>
+						<button v-on:click="updateDetails">Update Details</button><br>
+
+					</div>
 				</div>
 			</section>
 
@@ -75,6 +97,7 @@
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
 
 		<!-- TODO: Add SDKs for Firebase products that you want to use
 			https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -95,16 +118,19 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		//firebase.analytics();
+		var db = firebase.firestore();
 		const auth = firebase.auth();
 		</script>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="./vueControllers/login.js"></script>
 		<script src="./vueControllers/register.js"></script>
+		<script src="./vueControllers/profile.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		
 
 	</body>
 </html>
