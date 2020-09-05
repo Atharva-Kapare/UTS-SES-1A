@@ -33,18 +33,23 @@
         <!-- Three -->
 			<section id="three" class="wrapper">
 				<div class="inner" id="Appointment">
-					<label>Name:</label>
-					<input v-model="nameField" type="text"><br>
-
-					<label>Date:</label>
-					<input v-model="dateField" type="text"><br>
-
-					<label>illness:</label>
-                    <input v-model="illField" type="text"><br>
-                    
-					<button v-on:click="updateDetails">Update Appointment</button><br>
-
-					</div>
+					<header class="align-center">
+						<h2>My Appointment</h2>
+						<label>Name:</label>
+						<input v-model="nameField" type="text"><br>
+			
+						<label>Date:</label>
+						<input v-model="dateField" type="text"><br>
+			
+						<label>illness:</label>
+						<input v-model="illField" type="text"><br>
+			
+						<div class="align-center">
+							<p>Want to delete this Appointment? <a href="">Delete Appointment</a></p>
+							<button v-on:click="updateAppointment">Update Appointment</button><br>
+			
+						</div>
+					</header>
 				</div>
 			</section>
                 
@@ -89,4 +94,43 @@
 					Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="https://github.com/Atharva-Kapare/UTS-SES-1A/tree/master">Source code can be found here</a>
 				</div>
 			</section>>
+
+			<!-- The core Firebase JS SDK is always required and must be listed first -->
+			<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+			
+			<!-- TODO: Add SDKs for Firebase products that you want to use
+			                https://firebase.google.com/docs/web/setup#available-libraries -->
+			<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script> -->
+			
+			<script>
+				// Your web app's Firebase configuration
+				var firebaseConfig = {
+					apiKey: "AIzaSyC6-jDnY3vfELlU8io8wclnJudHQ3D3za4",
+					authDomain: "sas1-jason.firebaseapp.com",
+					databaseURL: "https://sas1-jason.firebaseio.com",
+					projectId: "sas1-jason",
+					storageBucket: "sas1-jason.appspot.com",
+					messagingSenderId: "107792389685",
+					appId: "1:107792389685:web:c89acea35507b1ed74037c"
+				};
+
+
+				/// Initialize Firebase
+				firebase.initializeApp(firebaseConfig);
+				var db = firebase.firestore();
+				// firebase.analytics();
+				const auth = firebase.auth();
+			</script>
+			
+			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+			<script src="./vueControllers/Appointment.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+		</body>
+
+
 </html>
