@@ -1,67 +1,62 @@
-<!DOCTYPE HTML>
-<!--
-	Projection by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>User Profile</title>
+		<title>Book Appointment</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico"/> <!-- icon file -->
-	</head>
-	<body class="subpage">
+    </head>
+    <div class="subpage">
 
-		<!-- Header -->
+    		<!-- Header -->
 		<header id="header">
 			<div class="inner" id="navID">
 				<a href="index.html" class="logo"><strong>EH</strong>ealth</a>
 				<nav id="nav">
-					<a href="index.html">Home</a>
-					<a href="appointment.html">Appointment</a>
+                    <a href="emergency.html">Book Emergency</a>
+                    <a href="remedies.html">Home Remedies</a>
+                    <a href="doctors.html">Find Doctor</a>
 				
 					<a v-if="log" href="profile.html">Profile</a>
-					<a v-if="!log" href="register.html">Register</a>
-					<a v-if="!log" href="login.html">Login</a>
 					<a v-if="log" href="javascript:signOut();">Log Out</a>
 
 				</nav>
 				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-			</div>
-		</header>
+	        </div>
+        </header>
+    </div>
 
-		<!-- Three -->
-			<section id="three" class="wrapper">
-				<div class="inner" id="profile">
-					<label>First Name:</label>
-					<input v-model="firstField" type="text"><br>
 
-					<label>Last Name:</label>
-					<input v-model="lastField" type="text"><br>
+    <div class="subpage">
+        <img src="images/1.jpg" align="left" width="9.5%" >
+    </div>
 
-					<label>Email: (This field can not be changed)</label>
-					<input v-model="emailField" type="text" disabled><br>
+	<!-- form -->
+    <section id="form" class="wrapper">
+        <div class="inner" id="appointment">
+        <label>Full Name:</label>
+        <input v-model="nameField" type="text"><br>
 
-					<label>Phone:</label>
-					<input v-model="phoneField" type="text"><br>
+        <label>Email:</label>
+        <input v-model="emailField" type="text"><br>
 
-					<label>Address:</label>
-					<input v-model="addressField" type="text"><br>
+        <p><label>Select Date of Birth:</label>
+        <input v-model="dateField" type="date"><br></p>
 
-					
-					<div class="align-center">
-						<h3>You have registered as a {{client}}</h3>
+        <p><label>Select Date for Appointment:</label>
+        <input v-model="appouintmentdateField" type="date"><br></p>
 
-						<p>Want to change Password? <a href="javascript:forgotPass()">Click here to change</a></p>
-						<button v-on:click="updateDetails">Update Details</button><br>
+        <p><label>Select Time for Appointment:</label>
+        <input v-model="timeField" type="time"><br></p>
 
-					</div>
-				</div>
-			</section>
+        <tr>
+        <p><td><input type="submit" value="Book Appointment"/></td></p>
+        </tr>
+    </div>
+    </section>
 
-		<!-- Footer -->
+    <!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 
@@ -93,7 +88,6 @@
 
 				</div>
 			</footer>
-
 		<!-- Scripts -->
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
