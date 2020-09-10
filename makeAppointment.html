@@ -31,6 +31,9 @@
 			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 		</div>
 	</header>
+	<div class="subpage">
+        <img src="images/1.jpg" align="left" width="9.5%" >
+    </div>
 
 	<!-- Three -->
 	<section id="three" class="wrapper">
@@ -41,17 +44,22 @@
 					<table>
 						<tr>
 							<td>Name:</td>
-							<td><input type="text" placeholder="Enter name" name="name" id="nameField" class="input">
-							</td>
+							<td><input v-model="dateField" type="text" placeholder="EnterName" ></td>
 						</tr>
+
 						<tr>
 							<td>Date of Booking:</td>
-							<td><input type="date" name="date" id="dateField" value=""
-									placeholder="choose your date for booking"></td>
+							<td><input v-model="dateField" type="date" ></td>
 						</tr>
+
+						<tr>
+						    <td>Select Time for Appointment:</td>
+							<td><input v-model="timeField" type="time"></td><br>
+						</tr>
+
 						<tr>
 							<td>illness:</td>
-							<td><input type="text" list="illness" name="illness" id="illField"></td>
+							<td><input v-model="timeField" type="text" list="illness"></td>
 						</tr>
 						<datalist id="illness">
 							<option value="internal medicine diseases">
