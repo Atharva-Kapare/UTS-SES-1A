@@ -6,7 +6,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico"/> <!-- icon file -->
-    </head>
+	</head>
+	<body>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+	<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyCuT1ebwg7cN9Me0hP4ui3eqFpmwXBEmg0",
+		authDomain: "appointments-c8d67.firebaseapp.com",
+		databaseURL: "https://appointments-c8d67.firebaseio.com",
+		projectId: "appointments-c8d67",
+		storageBucket: "appointments-c8d67.appspot.com",
+		messagingSenderId: "541361933589",
+		appId: "1:541361933589:web:e88e15f76fb693ca3bed1c"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	var firestore = firebase.firestore();
+	const db = firestore.collection("appointments");
+	</script>
+
     <div class="subpage">
 
     		<!-- Header -->
@@ -36,22 +57,22 @@
     <section id="form" class="wrapper">
         <div class="inner" id="appointment">
         <label>Full Name:</label>
-        <input v-model="nameField" type="text"><br>
+        <input v-model="nameField" id="fullName" type="text"><br>
 
         <label>Email:</label>
-        <input v-model="emailField" type="text"><br>
+        <input v-model="emailField" id="emailAppoint" type="text"><br>
 
         <p><label>Select Date of Birth:</label>
-        <input v-model="dateField" type="date"><br></p>
+        <input v-model="dateField" id="dob" type="date"><br></p>
 
         <p><label>Select Date for Appointment:</label>
-        <input v-model="appouintmentdateField" type="date"><br></p>
+        <input v-model="appouintmentdateField" id="dAppoint" type="date"><br></p>
 
         <p><label>Select Time for Appointment:</label>
-        <input v-model="timeField" type="time"><br></p>
+        <input v-model="timeField" id="tAppoint" type="time"><br></p>
 
         <tr>
-        <p><td><input type="submit" value="Book Appointment"/></td></p>
+        <p><td><button id="submit" class="btn btn-primary" >Book Appointment</button></td></p>
         </tr>
     </div>
     </section>
@@ -78,7 +99,7 @@
 							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
 						</div>
 						<ul class="actions">
-							<li><input value="Send Message" class="button alt" type="submit"></li>
+							<li><input value="Send Message" class="button alt" type="submit" id="submit"></li>
 						</ul>
 					</form>
 
@@ -88,34 +109,33 @@
 
 				</div>
 			</footer>
-		<!-- Scripts -->
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
 
-		<!-- TODO: Add SDKs for Firebase products that you want to use
-			https://firebase.google.com/docs/web/setup#available-libraries -->
-		<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script> -->
+			<script>
+				const submitBtn = document.querySelector("#submit");
+				let fullName = document.querySelector("#fullName");
+				let email = document.querySelector("#emailAppoint");
+				let dob = document.querySelector("#dob");
+				let dAppoint = document.querySelector("#dAppoint");
+				let tAppoint = document.querySelector("#tAppoint");
 
-		<script>
-		// Your web app's Firebase configuration
-		var firebaseConfig = {
-			apiKey: "AIzaSyBA2d2vzK_g3t3Ub7KQfRRsffocO0Eoi3E",
-			authDomain: "uts-ses-1a.firebaseapp.com",
-			databaseURL: "https://uts-ses-1a.firebaseio.com",
-			projectId: "uts-ses-1a",
-			storageBucket: "uts-ses-1a.appspot.com",
-			messagingSenderId: "515479105350",
-			appId: "1:515479105350:web:a85bad56a20ba250013f47",
-			measurementId: "G-0J82RMX5FR"
-		};
-		// Initialize Firebase
-		firebase.initializeApp(firebaseConfig);
-		//firebase.analytics();
-		var db = firebase.firestore();
-		const auth = firebase.auth();
-		</script>
+				submitBtn.addEventListener('click', function() {
+					let fullNameInput = fullName.value;
+					let emailInput = email.value;
+					let dobInput = dob.value;
+					let dAppointInput = dAppoint.value;
+					let tAppointInput = tAppoint.value;
+					db.doc().set({
+						fullName : fullNameInput,
+						email : emailInput,
+						dob : dobInput,
+						dAppoint : dAppointInput,
+						tAppoint : tAppointInput
+					}).then(function() {
+						console.log("Data Saved");
+					}) ;
+				});
+			</script>
+		
 
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="./vueControllers/login.js"></script>
