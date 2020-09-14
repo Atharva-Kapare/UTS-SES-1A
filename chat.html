@@ -35,7 +35,7 @@
   		<section class="msger">
 		  <header class="msger-header">
 			<div class="msger-header-title">
-			  <i class="fas fa-comment-alt"></i> Support Chat
+			  <i class="fas fa-comment-alt"></i> <h2>Chat Messages</h2>
 			</div>
 			<div class="msger-header-options">
 			  <span><i class="fas fa-cog"></i></span>
@@ -58,7 +58,7 @@
 				<div class="msg-text">
 				  Hi, Welcome to EHealth Services 👋 😄 <br/>
 				  1. I will be ready to receive documents. <br/>
-				  2. Write a message for your docotor. <br/>
+				  2. Write a message for your doctor. <br/>
 				  3. You need a quick analysis? <br/>
 				  4. You have an emergency and need attention <br/>
 				  5. Need help navigating the site? 
@@ -109,7 +109,7 @@
 		const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
 		const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 		const BOT_NAME = "Helper BOT";
-		const PERSON_NAME = "Jake";
+		const PERSON_NAME = "Admin";
 
 		msgerForm.addEventListener("submit", event => {
 		  event.preventDefault();
@@ -226,15 +226,36 @@
     </div>
     
     <!-- fixed footer bar -->
-    <div class="footer">
-      <div class="etcDetails">
-        <a href="MAIN-FAQPage.htm">FAQ</a>
-        <a href="MAIN-Terms&ConditionsPage.htm">Terms &amp; Conditions</a>
-        <a href="MAIN-PrivacyPage.htm">Privacy</a>
-        <a href="MAIN-SecurityPage.htm">Security</a>
-      </div>
-      
-      <p id="copyRight">&copy; UTS SES - 1A, Group 3 Spring 2020 - All Rights Reserved.</p>
-    </div>
+    <footer id="footer">
+        <div class="inner">
+
+            <h3>Have any questions?</h3>
+            <h2>Get in touch</h2>
+
+            <form action="#" method="post">
+
+                <div class="field half first">
+                    <label for="name">Name</label>
+                    <input name="name" id="name" type="text" placeholder="Name">
+                </div>
+                <div class="field half">
+                    <label for="email">Email</label>
+                    <input name="email" id="email" type="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                </div>
+                <ul class="actions">
+                    <li><input value="Send Message" class="button alt" type="submit" id="submit"></li>
+                </ul>
+            </form>
+
+            <div class="copyright">
+                Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="https://github.com/Atharva-Kapare/UTS-SES-1A/tree/master">Source code can be found here</a>
+            </div>
+
+        </div>
+    </footer>
   </body>
 </html>
