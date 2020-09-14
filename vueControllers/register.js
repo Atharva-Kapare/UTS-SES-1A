@@ -69,12 +69,13 @@ var register = new Vue({
                         this.wait = "Please wait while we register your account and sign you in.";
         
                         //Add the client to the database as well
-                        db.collection(this.client).doc(cred.user.uid).set({
+                        db.collection("user").doc(cred.user.uid).set({
                             first: this.firstField,
                             last: this.lastField,
                             email: this.emailField,
-                            assress: this.addressField,
-                            phone: this.phoneField
+                            address: this.addressField,
+                            phone: this.phoneField,
+                            type: this.client
                         })
                         .catch(function(error) {
                             console.error("Error adding document: ", error);

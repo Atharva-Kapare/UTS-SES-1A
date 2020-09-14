@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/x-icon" href="favicon.ico"/> <!-- icon file -->
 	</head>
 	<body class="subpage">
 
@@ -19,6 +20,7 @@
 				<a href="index.html" class="logo"><strong>EH</strong>ealth</a>
 				<nav id="nav">
 					<a href="index.html">Home</a>
+					<a href="appointment.html">Appointment</a>
 				
 					<a v-if="log" href="profile.html">Profile</a>
 					<a v-if="log" href="javascript:signOut();">Log Out</a>
@@ -27,22 +29,33 @@
 				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 			</div>
 		</header>
-
-		<!--Personal Details Display-->
-		<h2>Your Personal Details:</h2>
-			<p>Name:</p>
-			<p>Address:</p>
-			<p>Phone Number:</p>
-			<p>Email:</p>
-			<hr/>
-
+		
 		<!-- Three -->
 			<section id="three" class="wrapper">
 				<div class="inner" id="profile">
+					<label>First Name:</label>
+					<input v-model="firstField" type="text"><br>
 
-					<a href="bookappointments.html">Book an Appointment</a> <br/>
-					<a href="appointments.html">Arrange Your Appointments</a>
+					<label>Last Name:</label>
+					<input v-model="lastField" type="text"><br>
 
+					<label>Email: (This field can not be changed)</label>
+					<input v-model="emailField" type="text" disabled><br>
+
+					<label>Phone:</label>
+					<input v-model="phoneField" type="text"><br>
+
+					<label>Address:</label>
+					<input v-model="addressField" type="text"><br>
+
+					
+					<div class="align-center">
+						<h3>You have registered as a {{client}}</h3>
+
+						<p>Want to change Password? <a href="javascript:forgotPass()">Click here to change</a></p>
+						<button v-on:click="updateDetails">Update Details</button><br>
+
+					</div>
 				</div>
 			</section>
 
@@ -83,6 +96,7 @@
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
 
 		<!-- TODO: Add SDKs for Firebase products that you want to use
 			https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -103,16 +117,19 @@
 		// Initialize Firebase
 		firebase.initializeApp(firebaseConfig);
 		//firebase.analytics();
+		var db = firebase.firestore();
 		const auth = firebase.auth();
 		</script>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="./vueControllers/login.js"></script>
 		<script src="./vueControllers/register.js"></script>
+		<script src="./vueControllers/profile.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		
 
 	</body>
 </html>
