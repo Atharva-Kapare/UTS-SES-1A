@@ -63,7 +63,7 @@ var register = new Vue({
                 this.phoneField = parseInt(this.phoneField);
                 if(!Number.isNaN(this.phoneField)){
                     console.log(this.client);
-
+                    0o
                     if(this.client){
                         auth.createUserWithEmailAndPassword(this.emailField, this.passwordField).then(cred => {
                         this.wait = "Please wait while we register your account and sign you in.";
