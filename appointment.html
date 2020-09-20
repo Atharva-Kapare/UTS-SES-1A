@@ -14,13 +14,13 @@
 	<script>
 	// Your web app's Firebase configuration
 	var firebaseConfig = {
-		apiKey: "AIzaSyCuT1ebwg7cN9Me0hP4ui3eqFpmwXBEmg0",
-		authDomain: "appointments-c8d67.firebaseapp.com",
-		databaseURL: "https://appointments-c8d67.firebaseio.com",
-		projectId: "appointments-c8d67",
-		storageBucket: "appointments-c8d67.appspot.com",
-		messagingSenderId: "541361933589",
-		appId: "1:541361933589:web:e88e15f76fb693ca3bed1c"
+		apiKey: "AIzaSyBA2d2vzK_g3t3Ub7KQfRRsffocO0Eoi3E",
+		authDomain: "uts-ses-1a.firebaseapp.com",
+		databaseURL: "https://uts-ses-1a.firebaseio.com",
+		projectId: "uts-ses-1a",
+		storageBucket: "uts-ses-1a.appspot.com",
+		messagingSenderId: "515479105350",
+		appId: "1:515479105350:web:a85bad56a20ba250013f47"
 	};
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
@@ -131,8 +131,10 @@
 						dAppoint : dAppointInput,
 						tAppoint : tAppointInput
 					}).then(function() {
-						console.log("Data Saved");
-					}) ;
+						location.reload();
+						document.write("Data Saved");
+						header("refresh:1");
+		 			}) ;
 				});
 			</script>
 		
