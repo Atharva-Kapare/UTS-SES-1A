@@ -88,12 +88,29 @@
 
 		  <form class="msger-inputarea">
 			<input type="text" class="msger-input" id="message" placeholder="Enter your message...">
+			<input type='file' />
+            <br><img id="myImg" src="#" alt="your image" height=100 width=100>
 			<button type="submit" class="msger-send-btn">Send</button>
 		  </form>
-		</section>
+		  <script type="text/javascript">
+			window.addEventListener('load', function() {
+				document.querySelector('input[type="file"]').addEventListener('change', function() {
+					if (this.files && this.files[0]) {
+						var img = document.querySelector('img');  // $('img')[0]
+						img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+						img.onload = imageIsLoaded;
+					}
+				});
+			  });
+			  
+			  function imageIsLoaded() { 
+				alert(this.src);  // blob url
+				// update width and height ...
+			  }
+			</script>
 		<script>
-		  const msgerForm = get(".msger-inputarea");
-		const msgerInput = get(".msger-input");
+		const msgerForm = get(".msger-inputarea");
+		const msgerInput = get(".myImg");
 		const msgerChat = get(".msger-chat");
 
 
