@@ -1,16 +1,29 @@
+var nav = new Vue({
+    el: '#navID',
+    data: {
+        log: true
+    }
+});
+
+auth.onAuthStateChanged(user =>{
+    if(user){
+        console.log("Signed in as: " + user.email);
+        nav.log = true;
+        // setUpUI(user);
+    } else{
+        console.log("Not signed in");
+        nav.log = false;
+        // setUpUI(user);
+    }
+});
+
+
 function forgotPass(){
     console.log("forgot");
     var email = prompt("Please enter your email", "A password reset link will be sent to this email");
     auth.sendPasswordResetEmail(email).catch(e => {alert(e.message)});
 }
 
-auth.onAuthStateChanged(user =>{
-    if(user){
-        console.log("Signed in as: " + user.email);
-    } else{
-        console.log("Not signed in");
-    }
-});
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

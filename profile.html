@@ -103,27 +103,26 @@
 		<!-- <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script> -->
 
 		<script>
-		// Your web app's Firebase configuration
-		var firebaseConfig = {
-			apiKey: "AIzaSyBA2d2vzK_g3t3Ub7KQfRRsffocO0Eoi3E",
-			authDomain: "uts-ses-1a.firebaseapp.com",
-			databaseURL: "https://uts-ses-1a.firebaseio.com",
-			projectId: "uts-ses-1a",
-			storageBucket: "uts-ses-1a.appspot.com",
-			messagingSenderId: "515479105350",
-			appId: "1:515479105350:web:a85bad56a20ba250013f47",
-			measurementId: "G-0J82RMX5FR"
-		};
-		// Initialize Firebase
-		firebase.initializeApp(firebaseConfig);
-		//firebase.analytics();
-		var db = firebase.firestore();
-		const auth = firebase.auth();
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: "AIzaSyBA2d2vzK_g3t3Ub7KQfRRsffocO0Eoi3E",
+				authDomain: "uts-ses-1a.firebaseapp.com",
+				databaseURL: "https://uts-ses-1a.firebaseio.com",
+				projectId: "uts-ses-1a",
+				storageBucket: "uts-ses-1a.appspot.com",
+				messagingSenderId: "515479105350",
+				appId: "1:515479105350:web:a85bad56a20ba250013f47",
+				measurementId: "G-0J82RMX5FR"
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			//firebase.analytics();
+			var auth = firebase.auth();
+			
+			var db = firebase.firestore();
 		</script>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<script src="./vueControllers/login.js"></script>
-		<script src="./vueControllers/register.js"></script>
 		<script src="./vueControllers/profile.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/skel.min.js"></script>

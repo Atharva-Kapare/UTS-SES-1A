@@ -1,3 +1,7 @@
+function signOut(){
+    auth.signOut();
+};
+
 UID = "";
 
 auth.onAuthStateChanged(user =>{
