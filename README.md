@@ -4,6 +4,9 @@ This is the repo for the app we had to make in SES 1A
 # Topic
 We were tasked to create a web-based application that would be used by doctors and patients in order to diagnose illnesses over the internet without in person interaction.
 
+#To-Do
+* Need to be able to see the specialities for the doctors in their profile page
+
 # For the Testers
 * Test the functionality of the register page
 
