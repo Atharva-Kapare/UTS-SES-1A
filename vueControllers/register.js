@@ -53,7 +53,8 @@ var register = new Vue({
         addressField: "",
         phoneField: null,
         wait: "",
-        client: ""
+        client: "",
+        dob: ""
     },
     methods: {
         registerUser(){
@@ -63,7 +64,6 @@ var register = new Vue({
                 this.phoneField = parseInt(this.phoneField);
                 if(!Number.isNaN(this.phoneField)){
                     console.log(this.client);
-                    0o
                     if(this.client){
                         auth.createUserWithEmailAndPassword(this.emailField, this.passwordField).then(cred => {
                         this.wait = "Please wait while we register your account and sign you in.";
@@ -75,7 +75,8 @@ var register = new Vue({
                             email: this.emailField,
                             address: this.addressField,
                             phone: this.phoneField,
-                            type: this.client
+                            type: this.client,
+                            dob: this.dob
                         })
                         .catch(function(error) {
                             console.error("Error adding document: ", error);
