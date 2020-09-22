@@ -6,6 +6,7 @@ We were tasked to create a web-based application that would be used by doctors a
 
 #To-Do
 * Need to be able to see the specialities for the doctors in their profile page
+* Fix bug where doctors can register without giving their speciality
 * Need to make the appointment page available only to the patients
 * Need to do some checks in the appointment page, the user should not eb able to book an appointment with incomplete fields
 
