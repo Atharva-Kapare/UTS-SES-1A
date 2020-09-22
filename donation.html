@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Book Appointment</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" type="image/x-icon" href="favicon.ico"/> <!-- icon file -->
+	</head>
+	<body class="subpage">
+
+        <!-- Header -->
+		<header id="header">
+			<div class="inner" id="navID">
+				<a href="index.html" class="logo"><strong>EH</strong>ealth</a>
+				<nav id="nav">
+					<a href="index.html">Home</a>
+				
+					<a v-if="log" href="profile.html">Profile</a>
+					<a v-if="!log" href="register.html">Register</a>
+					<a v-if="!log" href="login.html">Login</a>
+					<a v-if="log" href="javascript:signOut();">Log Out</a>
+
+				</nav>
+				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+        </header>
+		
+		<h3>Help Keep The Website Running</h3>
+		<p>We aim to keep our services free for our users and to keep it running that way, you can show your support by giving however much you can by donating below:</p>
+
+        <!-- Credit/Debit Card Fields -->
+        <div>
+            <h4> Credit/Debit Card </h4>
+        </div>
+
+        <div class="inner">
+            <label>Card Number</label>
+            <input type="text" required placeholder="xxxx xxxx xxxx xxxx"> 
+
+            <label>Card Holder Name</label>
+            <input type="text">        
+
+            <label>Expiration Date</label>
+            <input type="text" required placeholder="MM" maxlength="2" >
+            <input type="text" required placeholder="YY" maxlength="2">
+
+            <label>Security Code</label>
+            <input type="text" required placeholder="CVV">
+        </div>
+
+        <div class="">
+            <p>We accept Visa, MasterCard, PayPal</p>
+            <img src="/images/visacard.jpg" style="width:70px;">
+            <img src="/images/mastercard.jpg" style="width:40px;">
+            <img src="/images/paypal.png" style="width:80px;">
+        </div>
+
+        <!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+
+				<h3>Have any questions?</h3>
+				<h2>Get in touch</h2>
+
+				<form action="#" method="post">
+
+					<div class="field half first">
+						<label for="name">Name</label>
+						<input name="name" id="name" type="text" placeholder="Name">
+					</div>
+					<div class="field half">
+						<label for="email">Email</label>
+						<input name="email" id="email" type="email" placeholder="Email">
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+					</div>
+					<ul class="actions">
+						<li><input value="Send Message" class="button alt" type="submit"></li>
+					</ul>
+                </form>
+                
+
+				<div class="copyright">
+					Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="https://github.com/Atharva-Kapare/UTS-SES-1A/tree/master">Source code can be found here</a>
+				</div>
+			</div>
+		</footer>
+
+    </body>
+    
+</html> 

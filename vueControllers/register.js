@@ -53,7 +53,9 @@ var register = new Vue({
         addressField: "",
         phoneField: null,
         wait: "",
-        client: ""
+        client: "",
+        dob: "",
+        speciality: ""
     },
     methods: {
         registerUser(){
@@ -63,22 +65,40 @@ var register = new Vue({
                 this.phoneField = parseInt(this.phoneField);
                 if(!Number.isNaN(this.phoneField)){
                     console.log(this.client);
-
                     if(this.client){
                         auth.createUserWithEmailAndPassword(this.emailField, this.passwordField).then(cred => {
                         this.wait = "Please wait while we register your account and sign you in.";
         
                         //Add the client to the database as well
-                        db.collection(this.client).doc(cred.user.uid).set({
-                            first: this.firstField,
-                            last: this.lastField,
-                            email: this.emailField,
-                            assress: this.addressField,
-                            phone: this.phoneField
-                        })
-                        .catch(function(error) {
-                            console.error("Error adding document: ", error);
-                        });
+                        if(this.client == "doctor"){
+                            db.collection("user").doc(cred.user.uid).set({
+                                first: this.firstField,
+                                last: this.lastField,
+                                email: this.emailField,
+                                address: this.addressField,
+                                phone: this.phoneField,
+                                type: this.client,
+                                dob: this.dob,
+                                speciality: this.speciality,
+                                UID: cred.user.uid
+                            })
+                            .catch(function(error) {
+                                console.error("Error adding document: ", error);
+                            });
+                        }else{
+                            db.collection("user").doc(cred.user.uid).set({
+                                first: this.firstField,
+                                last: this.lastField,
+                                email: this.emailField,
+                                address: this.addressField,
+                                phone: this.phoneField,
+                                type: this.client,
+                                dob: this.dob
+                            })
+                            .catch(function(error) {
+                                console.error("Error adding document: ", error);
+                            });
+                        }
         
                         sleep(5000).then(() => {
                             this.sample = 'Account Registered!';
