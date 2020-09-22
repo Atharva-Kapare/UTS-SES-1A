@@ -8,25 +8,6 @@
 		<link rel="icon" type="image/x-icon" href="favicon.ico"/> <!-- icon file -->
 	</head>
 	<body>
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
-	<script>
-	// Your web app's Firebase configuration
-	var firebaseConfig = {
-		apiKey: "AIzaSyBA2d2vzK_g3t3Ub7KQfRRsffocO0Eoi3E",
-		authDomain: "uts-ses-1a.firebaseapp.com",
-		databaseURL: "https://uts-ses-1a.firebaseio.com",
-		projectId: "uts-ses-1a",
-		storageBucket: "uts-ses-1a.appspot.com",
-		messagingSenderId: "515479105350",
-		appId: "1:515479105350:web:a85bad56a20ba250013f47"
-	};
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-	var firestore = firebase.firestore();
-	const db = firestore.collection("appointments");
-	</script>
 
     <div class="subpage">
 
@@ -56,14 +37,18 @@
 	<!-- form -->
     <section id="form" class="wrapper">
         <div class="inner" id="appointment">
-        <label>Full Name:</label>
-        <input v-model="nameField" id="fullName" type="text"><br>
 
-        <label>Email:</label>
-        <input v-model="emailField" id="emailAppoint" type="text"><br>
-
-        <p><label>Select Date of Birth:</label>
-        <input v-model="dateField" id="dob" type="date"><br></p>
+		<div class="12u$">
+			<div class="select-wrapper">
+				<select name="demo-category" id="demo-category">
+					<option value="">- Select a Doctor -</option>
+					<option value="1">Manufacturing</option>
+					<option value="1">Shipping</option>
+					<option value="1">Administration</option>
+					<option value="1">Human Resources</option>
+				</select>
+			</div>
+		</div>
 
         <p><label>Select Date for Appointment:</label>
         <input v-model="appouintmentdateField" id="dAppoint" type="date"><br></p>
@@ -78,37 +63,70 @@
     </section>
 
     <!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
+	<footer id="footer">
+		<div class="inner">
 
-					<h3>Have any questions?</h3>
-					<h2>Get in touch</h2>
+			<h3>Have any questions?</h3>
+			<h2>Get in touch</h2>
 
-					<form action="#" method="post">
+			<form action="#" method="post">
 
-						<div class="field half first">
-							<label for="name">Name</label>
-							<input name="name" id="name" type="text" placeholder="Name">
-						</div>
-						<div class="field half">
-							<label for="email">Email</label>
-							<input name="email" id="email" type="email" placeholder="Email">
-						</div>
-						<div class="field">
-							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-						</div>
-						<ul class="actions">
-							<li><input value="Send Message" class="button alt" type="submit" id="submit"></li>
-						</ul>
-					</form>
-
-					<div class="copyright">
-						Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="https://github.com/Atharva-Kapare/UTS-SES-1A/tree/master">Source code can be found here</a>
-					</div>
-
+				<div class="field half first">
+					<label for="name">Name</label>
+					<input name="name" id="name" type="text" placeholder="Name">
 				</div>
-			</footer>
+				<div class="field half">
+					<label for="email">Email</label>
+					<input name="email" id="email" type="email" placeholder="Email">
+				</div>
+				<div class="field">
+					<label for="message">Message</label>
+					<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input value="Send Message" class="button alt" type="submit" id="submit"></li>
+				</ul>
+			</form>
+
+			<div class="copyright">
+				Made at UTS SES 1A, Group 3 Spring 2020. Images: <a href="https://unsplash.com">Unsplash</a><div class="p"></div> <a href="https://github.com/Atharva-Kapare/UTS-SES-1A/tree/master">Source code can be found here</a>
+			</div>
+
+		</div>
+	</footer>
+
+	
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+	<script>
+	// Your web app's Firebase configuration
+
+	var firebaseConfig = {
+		apiKey: "AIzaSyBA2d2vzK_g3t3Ub7KQfRRsffocO0Eoi3E",
+		authDomain: "uts-ses-1a.firebaseapp.com",
+		databaseURL: "https://uts-ses-1a.firebaseio.com",
+		projectId: "uts-ses-1a",
+		storageBucket: "uts-ses-1a.appspot.com",
+		messagingSenderId: "515479105350",
+		appId: "1:515479105350:web:a85bad56a20ba250013f47",
+		measurementId: "G-0J82RMX5FR"
+	};
+	// This is the other database that was created by Ben for testing purposes
+	// var firebaseConfig = {
+	// 	apiKey: "AIzaSyCuT1ebwg7cN9Me0hP4ui3eqFpmwXBEmg0",
+	// 	authDomain: "appointments-c8d67.firebaseapp.com",
+	// 	databaseURL: "https://appointments-c8d67.firebaseio.com",
+	// 	projectId: "appointments-c8d67",
+	// 	storageBucket: "appointments-c8d67.appspot.com",
+	// 	messagingSenderId: "541361933589",
+	// 	appId: "1:541361933589:web:e88e15f76fb693ca3bed1c"
+	// };
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	var firestore = firebase.firestore();
+	const db = firestore.collection("appointments");
+	</script>
 
 			<script>
 				const submitBtn = document.querySelector("#submit");
