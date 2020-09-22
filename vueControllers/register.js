@@ -54,7 +54,8 @@ var register = new Vue({
         phoneField: null,
         wait: "",
         client: "",
-        dob: ""
+        dob: "",
+        speciality: ""
     },
     methods: {
         registerUser(){
@@ -69,18 +70,34 @@ var register = new Vue({
                         this.wait = "Please wait while we register your account and sign you in.";
         
                         //Add the client to the database as well
-                        db.collection("user").doc(cred.user.uid).set({
-                            first: this.firstField,
-                            last: this.lastField,
-                            email: this.emailField,
-                            address: this.addressField,
-                            phone: this.phoneField,
-                            type: this.client,
-                            dob: this.dob
-                        })
-                        .catch(function(error) {
-                            console.error("Error adding document: ", error);
-                        });
+                        if(this.client == "doctor"){
+                            db.collection("user").doc(cred.user.uid).set({
+                                first: this.firstField,
+                                last: this.lastField,
+                                email: this.emailField,
+                                address: this.addressField,
+                                phone: this.phoneField,
+                                type: this.client,
+                                dob: this.dob,
+                                speciality: this.speciality
+                            })
+                            .catch(function(error) {
+                                console.error("Error adding document: ", error);
+                            });
+                        }else{
+                            db.collection("user").doc(cred.user.uid).set({
+                                first: this.firstField,
+                                last: this.lastField,
+                                email: this.emailField,
+                                address: this.addressField,
+                                phone: this.phoneField,
+                                type: this.client,
+                                dob: this.dob
+                            })
+                            .catch(function(error) {
+                                console.error("Error adding document: ", error);
+                            });
+                        }
         
                         sleep(5000).then(() => {
                             this.sample = 'Account Registered!';
