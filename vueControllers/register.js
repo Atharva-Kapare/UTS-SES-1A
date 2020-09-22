@@ -79,7 +79,8 @@ var register = new Vue({
                                 phone: this.phoneField,
                                 type: this.client,
                                 dob: this.dob,
-                                speciality: this.speciality
+                                speciality: this.speciality,
+                                UID: cred.user.uid
                             })
                             .catch(function(error) {
                                 console.error("Error adding document: ", error);

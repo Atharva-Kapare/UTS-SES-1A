@@ -5,6 +5,10 @@ var nav = new Vue({
     }
 });
 
+function signOut(){
+    auth.signOut();
+};
+
 auth.onAuthStateChanged(user =>{
     if(user){
         console.log("Signed in as: " + user.email);

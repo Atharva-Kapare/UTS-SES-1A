@@ -37,29 +37,25 @@
 	<!-- form -->
     <section id="form" class="wrapper">
         <div class="inner" id="appointment">
+			<div class="12u$">
+				<div class="select-wrapper">
+					<select v-model="selectedDoctor" name="demo-category" id="demo-category">
+						<option value="">- Select a Doctor -</option>
+						<option v-for="doctor in doctors" v-bind:value="doctor.UID">{{ "Dr. " + doctor.first + " " + doctor.last + ", " + doctor.speciality}}</option>
+					</select>
+				</div>
+			</div><br><br>
 
-		<div class="12u$">
-			<div class="select-wrapper">
-				<select name="demo-category" id="demo-category">
-					<option value="">- Select a Doctor -</option>
-					<option value="1">Manufacturing</option>
-					<option value="1">Shipping</option>
-					<option value="1">Administration</option>
-					<option value="1">Human Resources</option>
-				</select>
-			</div>
-		</div>
+			<p><label>Select Date for Appointment:</label>
+			<input v-model="dateField" type="date"><br></p>
 
-        <p><label>Select Date for Appointment:</label>
-        <input v-model="appouintmentdateField" id="dAppoint" type="date"><br></p>
+			<p><label>Select Time for Appointment:</label>
+			<input v-model="timeField" type="time"><br></p>
 
-        <p><label>Select Time for Appointment:</label>
-        <input v-model="timeField" id="tAppoint" type="time"><br></p>
-
-        <tr>
-        <p><td><button id="submit" class="btn btn-primary" >Book Appointment</button></td></p>
-        </tr>
-    </div>
+			<tr>
+			<p><td><button v-on:click="makeAppointment">Book Appointment</button></td></p>
+			</tr>
+    	</div>
     </section>
 
     <!-- Footer -->
@@ -125,9 +121,9 @@
 	// };
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
-	var firestore = firebase.firestore();
+	const db = firebase.firestore();
 	const auth = firebase.auth();
-	const db = firestore.collection("appointments");
+	// const db = firestore.collection("appointments");
 	</script>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
