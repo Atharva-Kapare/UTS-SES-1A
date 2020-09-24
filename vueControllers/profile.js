@@ -4,6 +4,12 @@ function signOut(){
 
 UID = "";
 
+function forgotPass(){
+    console.log("forgot");
+    var email = prompt("Please enter your email", "A password reset link will be sent to this email");
+    auth.sendPasswordResetEmail(email).catch(e => {alert(e.message)});
+}
+
 auth.onAuthStateChanged(user =>{
     if(user){
         UID = user.uid;
