@@ -29,21 +29,20 @@
 				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 			</div>
 		</header>
-		
-		
-
-		
-
+	
 		<!-- Three -->
 		
 			<!-- <section id="three" class="wrapper"> -->
 				<div class="profile-section">
+
 				<div class="profile-picture">
-					<h4><b>ABOUT ME</b></h4>
-					<img src="images/blankprofilepicture.webp" width="250px" height="250px">	
+					<center>
+					<h4><b>YOUR PROFILE</b></h4>
+					<img src="images/blankprofilepicture.webp" width="250px" height="250px">
+					</center>
 				</div>
 			
-				<div class="inner" id="profile">
+				<div class="profile-details" id="profile">
 					<h3>You have registered as a {{client}}</h3>
 					<label>First Name:</label>
 					<input v-model="firstField" type="text"><br>
@@ -151,7 +150,12 @@
 
 	}
 	.profile-picture {
-		display:flexbox
+		flex: 1;
+		justify-content: center;
+	}
+
+	.profile-details {
+		flex: 1;
 	}
 	</style>
 
