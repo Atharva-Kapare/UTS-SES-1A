@@ -1,4 +1,4 @@
-let button = document.getElementsByClassName("msger-send-btn");
+let button = document.getElementsByClassName("msger-send-btn")[0];
 
 button.addEventListener("click", function() {
 
