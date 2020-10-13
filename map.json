@@ -1,0 +1,28 @@
+{
+    "Doctors" : {
+      "Doctor 1" : {
+        "Field" : "Oncology",
+        "FullName" : "Edward LongBottom",
+        "Lat" : -33.76464,
+        "Lng" : 150.81738,
+        "Location" : "Mt Druitt",
+        "Time" : "9:00am - 5:00pm"
+      },
+      "Doctor 2" : {
+        "Field" : "Cardiology",
+        "FullName" : "Penny ShortBottom",
+        "Lat" : -33.77561,
+        "Lng" : 150.91739,
+        "Location" : "Blacktown",
+        "Time" : "9:00am - 5:00pm"
+      },
+      "Doctor 3" : {
+        "Field" : "Dentistry",
+        "FullName" : "David MediumBottom",
+        "Lat" : -33.81698,
+        "Lng" : 151.00343,
+        "Location" : "Parramatta",
+        "Time" : "9:00am - 5:00pm"
+      }
+    }
+  }

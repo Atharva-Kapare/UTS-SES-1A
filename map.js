@@ -16,7 +16,7 @@
 		        "title": "Blacktown",
 		        "lat": -33.7668,
 		        "lng": 150.9053,
-		        "description": "<strong>Dr Edward Longbottom</strong> specialises in Oncology and is available at Blacktown Monday to Friday, 9am to 5pm."
+		        "description": "<strong>Dr Edward Longbottom</strong> specialises in Oncology and is available at Blacktown Monday to Friday, 9am to 5pm. PH: 0402837012"
 		    },
 		    {
 		        "title": "Parramatta",
@@ -29,7 +29,8 @@
 		        "lat": -33.75374,
 		        "lng": 150.6877,
 		        "description": "<strong>Dr FirstName LastName</strong> is a General Practioner and is available at enrith Monday to Friday, 9am to 5pm.."
-		    }
+			}
+			
 		]
 
 		// Creating a global infoWindow object that will be reused by all markers
