@@ -30,9 +30,9 @@
     </div>
 
 
-    <div class="subpage">
+    <!-- <div class="subpage">
         <img src="images/1.jpg" align="left" width="9.5%" >
-    </div>
+    </div> -->
 
 	<!-- form -->
     <section id="form" class="wrapper">
@@ -53,9 +53,21 @@
 			<input v-model="timeField" type="time"><br></p>
 
 			<tr>
-			<p><td><button v-on:click="makeAppointment">Book Appointment</button></td></p>
+			<p><td><button v-on:click="makeAppointment">{{ sample }}</button></td></p>
 			</tr>
-    	</div>
+			<br>
+			<br>
+			<br>
+			<div class="inner">
+				<div class="">
+					<h3>Booked Appointments</h3>
+				</div>
+
+				<div v-for="appointment in appointments" class="box">
+					{{ "Doctor: " + appointment.doctor + ", " + "Patient: " + appointment.patient + ", " + "Date: " + appointment.date + ", " + "Time: " + " " + appointment.time }}
+				</div>
+			</div>
+		</div>
     </section>
 
     <!-- Footer -->

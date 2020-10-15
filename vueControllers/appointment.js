@@ -26,7 +26,9 @@ var appointment = new Vue({
         doctors: [],
         selectedDoctor: "",
         dateField: "",
-        timeField: ""
+        timeField: "",
+        sample: "Book Appointment",
+        appointments: []
     },
     methods: {
         makeAppointment(){
@@ -47,6 +49,8 @@ var appointment = new Vue({
                 db.collection("user").doc(firebase.auth().currentUser.uid).update({
                     appointments: firebase.firestore.FieldValue.arrayUnion(docRef.id)
                 });
+
+                this.sample = "Appointment Booked!"
                 // db.collection("users").doc(doctor).update({
                 //     appointments: firebase.firestore.FieldValue.arrayUnion("test")
                 // })
@@ -56,23 +60,7 @@ var appointment = new Vue({
     }
 });
 
-const submitBtn = document.querySelector("#submit");
-let dAppoint = document.querySelector("#dAppoint");
-let tAppoint = document.querySelector("#tAppoint");
 
-submitBtn.addEventListener('click', function() {
-
-    let dAppointInput = dAppoint.value;
-    let tAppointInput = tAppoint.value;
-    db.collection("appointments").doc().set({
-        dAppoint : dAppointInput,
-        tAppoint : tAppointInput
-    }).then(function() {
-        location.reload();
-        document.write("Data Saved");
-        header("refresh:1");
-    }) ;
-});
 
 var nav = new Vue({
     el: '#navID',
@@ -85,6 +73,63 @@ auth.onAuthStateChanged(user =>{
     if(user){
         console.log("Signed in as: " + user.email);
         nav.log = true;
+                
+        db.collection("user").doc(user.uid).get().then(function(doc) {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+
+                // for(data in doc.data().appointments){
+                //     appointment.appointments.push(data);
+                // }
+                var temp = doc.data().appointments;
+                
+                for(i = 0; i < temp.length; i++){
+                    var date = "";
+                    var time = "";
+                    var doctor = "";
+                    var patient = "";
+
+                    db.collection("appointments").doc(temp[i]).get().then(function(doc) {
+                        //console.log(doc.data());
+                        date = doc.data().dateAppointment;
+                        time = doc.data().timeAppointment;
+                        
+                        db.collection("user").doc(doc.data().doctorSelected).get().then(function(doc) {
+                            //console.log(doc.data().first);
+                            doctor = "Dr. " + doc.data().first + " " + doc.data().last;
+                        });
+
+                        db.collection("user").doc(doc.data().patient).get().then(function(doc) {
+                            //console.log(doc.data().first);
+                            patient = doc.data().first + " " + doc.data().last;
+
+                            // console.log(date);
+                            // console.log(time);
+                            // console.log(doctor);
+                            // console.log(patient);
+
+                            appointment.appointments.push(new Appointment(date, time, doctor, patient));
+
+                        });
+
+                    })
+
+                    
+                }
+                
+                console.log(temp);
+                
+                //appointment.appointments = doc.data().appointments;
+
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+
+
         // setUpUI(user);
     } else{
         console.log("Not signed in");
@@ -92,3 +137,12 @@ auth.onAuthStateChanged(user =>{
         // setUpUI(user);
     }
 });
+
+class Appointment{
+    constructor(date, time, doctor, patient){
+        this.date = date;
+        this.time = time;
+        this.doctor = doctor;
+        this.patient = patient;
+    }
+}
