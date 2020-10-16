@@ -27,7 +27,7 @@ var appointment = new Vue({
         selectedDoctor: "",
         dateField: "",
         timeField: "",
-        sample: "Book Appointment",
+        sample: 'Book Appointment',
         appointments: []
     },
     methods: {
@@ -41,6 +41,8 @@ var appointment = new Vue({
                 patient: firebase.auth().currentUser.uid
             }).then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
+                //this.sample = 'Appointment Booked!';
+                alert("Booked!");
 
                 db.collection("user").doc(doctor).update({
                     appointments: firebase.firestore.FieldValue.arrayUnion(docRef.id)
@@ -50,7 +52,6 @@ var appointment = new Vue({
                     appointments: firebase.firestore.FieldValue.arrayUnion(docRef.id)
                 });
 
-                this.sample = "Appointment Booked!"
                 // db.collection("users").doc(doctor).update({
                 //     appointments: firebase.firestore.FieldValue.arrayUnion("test")
                 // })
@@ -82,42 +83,49 @@ auth.onAuthStateChanged(user =>{
                 //     appointment.appointments.push(data);
                 // }
                 var temp = doc.data().appointments;
+                console.log(temp);
                 
-                for(i = 0; i < temp.length; i++){
-                    var date = "";
-                    var time = "";
-                    var doctor = "";
-                    var patient = "";
+                temp.forEach(display);
 
-                    db.collection("appointments").doc(temp[i]).get().then(function(doc) {
-                        //console.log(doc.data());
-                        date = doc.data().dateAppointment;
-                        time = doc.data().timeAppointment;
+                // for(i = 0; i < temp.length; i++){
+                    // var document = temp[i];
+                    // var date = "";
+                    // var time = "";
+                    // var doctor = "";
+                    // var patient = "";
+                    // var app = new Appointment(date, time, doctor, patient)
+
+
+                    // db.collection("appointments").doc(document).get().then(function(doc) {
+                    //     //console.log(doc.data());
+                    //     console.log(document);
+                    //     app.setDate(doc.data().dateAppointment);
+                    //     //date = doc.data().dateAppointment;
+                    //     time = doc.data().timeAppointment;
                         
-                        db.collection("user").doc(doc.data().doctorSelected).get().then(function(doc) {
-                            //console.log(doc.data().first);
-                            doctor = "Dr. " + doc.data().first + " " + doc.data().last;
-                        });
+                    //     db.collection("user").doc(doc.data().doctorSelected).get().then(function(doc) {
+                    //         //console.log(doc.data().first);
+                    //         doctor = "Dr. " + doc.data().first + " " + doc.data().last;
+                    //     });
 
-                        db.collection("user").doc(doc.data().patient).get().then(function(doc) {
-                            //console.log(doc.data().first);
-                            patient = doc.data().first + " " + doc.data().last;
+                    //     db.collection("user").doc(doc.data().patient).get().then(function(doc) {
+                    //         //console.log(doc.data().first);
+                    //         patient = doc.data().first + " " + doc.data().last;
 
-                            // console.log(date);
-                            // console.log(time);
-                            // console.log(doctor);
-                            // console.log(patient);
+                    //         // console.log(date);
+                    //         // console.log(time);
+                    //         // console.log(doctor);
+                    //         // console.log(patient);
+                    //         appointment.appointments.push(app);
+                    //         console.log(app)
+                    //     });
 
-                            appointment.appointments.push(new Appointment(date, time, doctor, patient));
-
-                        });
-
-                    })
+                    // })
 
                     
-                }
+                // }
                 
-                console.log(temp);
+                //console.log(temp);
                 
                 //appointment.appointments = doc.data().appointments;
 
@@ -138,11 +146,62 @@ auth.onAuthStateChanged(user =>{
     }
 });
 
+function display(document){
+    var date = "";
+    var time = "";
+    var doctor = "";
+    var patient = "";
+    var app = new Appointment(date, time, doctor, patient)
+
+
+    db.collection("appointments").doc(document).get().then(function(doc) {
+        //console.log(doc.data());
+        console.log(document);
+        app.setDate(doc.data().dateAppointment);
+        app.setTime(doc.data().timeAppointment);
+        //date = doc.data().dateAppointment;
+        //time = doc.data().timeAppointment;
+        
+        db.collection("user").doc(doc.data().doctorSelected).get().then(function(doc) {
+            //console.log(doc.data().first);
+            doctor = "Dr. " + doc.data().first + " " + doc.data().last;
+            app.setDoctor(doctor);
+        });
+
+        db.collection("user").doc(doc.data().patient).get().then(function(doc) {
+            //console.log(doc.data().first);
+            patient = doc.data().first + " " + doc.data().last;
+            app.setPatient(patient);
+
+            // console.log(date);
+            // console.log(time);
+            // console.log(doctor);
+            // console.log(patient);
+            appointment.appointments.push(app);
+            console.log(app)
+        });
+
+    })
+}
+
 class Appointment{
     constructor(date, time, doctor, patient){
         this.date = date;
         this.time = time;
         this.doctor = doctor;
+        this.patient = patient;
+    }
+
+    setDate(date){
+        this.date = date;
+    }
+    setTime(time){
+        this.time = time;
+    }
+    setDoctor(doctor){
+        this.doctor = doctor;
+    }
+    setPatient(patient){
         this.patient = patient;
     }
 }
