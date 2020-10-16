@@ -58,6 +58,15 @@ var appointment = new Vue({
                 // })
                 // regions: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
             });
+        },
+        cancelAppointment(appointment){
+            console.log(appointment);
+            if(confirm("Are you sure you want to cancel this appointment?")){
+
+            }
+        },
+        changeAppointment(appointment){
+            
         }
     }
 });
