@@ -18,11 +18,27 @@
       },
       "Doctor 3" : {
         "Field" : "Dentistry",
-        "FullName" : "David MediumBottom",
+        "FullName" : "Karan Singh",
         "Lat" : -33.81698,
         "Lng" : 151.00343,
         "Location" : "Parramatta",
         "Time" : "9:00am - 5:00pm"
-      }
+      },
+      "Doctor 4" : {
+        "Field" : "Dentistry",
+        "FullName" : "Andy Lee",
+        "lat": -33.8809,
+        "lng": 151.1155,
+        "Location" : "Croydon",
+        "Time" : "9:00am - 5:00pm"
+      },
+      "Doctor 5" : {
+        "Field" : "Surgeon",
+        "FullName" : "Himanshu Mehta",
+        "lat": -33.8775,
+        "lng": 151.0824,
+        "Location" : "Strathfield",
+        "Time" : "9:00am - 5:00pm"
     }
   }
+}
