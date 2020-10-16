@@ -29,10 +29,21 @@
 				<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 			</div>
 		</header>
-		
+	
 		<!-- Three -->
-			<section id="three" class="wrapper">
-				<div class="inner" id="profile">
+		
+			<!-- <section id="three" class="wrapper"> -->
+				<div class="profile-section">
+
+				<div class="profile-picture">
+					<center>
+					<h4><b>YOUR PROFILE</b></h4>
+					<img src="images/blankprofilepicture.webp" width="250px" height="250px">
+					</center>
+				</div>
+			
+				<div class="profile-details" id="profile">
+					<h3>You have registered as a {{client}}</h3>
 					<label>First Name:</label>
 					<input v-model="firstField" type="text"><br>
 
@@ -50,14 +61,13 @@
 
 					
 					<div class="align-center">
-						<h3>You have registered as a {{client}}</h3>
-
 						<p>Want to change Password? <a href="javascript:forgotPass()">Click here to change</a></p>
 						<button v-on:click="updateDetails">Update Details</button><br>
 
 					</div>
 				</div>
-			</section>
+			</div>
+			<!-- </section> -->
 
 		<!-- Footer -->
 			<footer id="footer">
@@ -131,4 +141,21 @@
 		
 
 	</body>
+
+	<style> 
+	.profile-section {
+		display:flex;
+		margin: 8%;
+
+	}
+	.profile-picture {
+		flex: 1;
+	}
+
+	.profile-details {
+		flex: 1;
+	}
+	</style>
+
+
 </html>
