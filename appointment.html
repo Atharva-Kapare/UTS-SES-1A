@@ -64,7 +64,9 @@
 				</div>
 
 				<div v-for="appointment in appointments" class="box">
-					{{ "Doctor: " + appointment.doctor + ", " + "Patient: " + appointment.patient + ", " + "Date: " + appointment.date + ", " + "Time: " + " " + appointment.time }}
+					<h4>{{ "Doctor: " + appointment.doctor + ", " + "Patient: " + appointment.patient + ", " + "Date: " + appointment.date + ", " + "Time: " + " " + appointment.time }}</h4>
+					<button>Change Details</button>
+					<button>Cancel Appointment</button>
 				</div>
 			</div>
 		</div>

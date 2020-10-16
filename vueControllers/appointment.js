@@ -42,7 +42,6 @@ var appointment = new Vue({
             }).then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
                 //this.sample = 'Appointment Booked!';
-                alert("Booked!");
 
                 db.collection("user").doc(doctor).update({
                     appointments: firebase.firestore.FieldValue.arrayUnion(docRef.id)
@@ -51,6 +50,8 @@ var appointment = new Vue({
                 db.collection("user").doc(firebase.auth().currentUser.uid).update({
                     appointments: firebase.firestore.FieldValue.arrayUnion(docRef.id)
                 });
+
+                if(!alert('Appointment Booked!')){window.location.reload();}
 
                 // db.collection("users").doc(doctor).update({
                 //     appointments: firebase.firestore.FieldValue.arrayUnion("test")
